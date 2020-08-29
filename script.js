@@ -55,7 +55,7 @@ function searchCity(city) {
         var longitude = response.coord.lon;
         
         // UV index calculator
-        var uvURL = "http://api.openweathermap.org/data/2.5/uvi?appid=" + key + "&lat=" + latitude + "&lon=" + longitude;
+        var uvURL = "https://api.openweathermap.org/data/2.5/uvi?appid=" + key + "&lat=" + latitude + "&lon=" + longitude;
       
         // AJAX Call to WeatherMapAPI (for UVI calculation)
         $.ajax({
