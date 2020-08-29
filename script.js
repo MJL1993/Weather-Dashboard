@@ -77,22 +77,27 @@ function searchCity(city) {
             if (uvIndex < 3) {
               $(".uv").css({"background-color": "lightseagreen"});
               $(".uv").css({"width": "25%"});
+              $(".uv").css({"padding": "10px"});
             }
             if (uvIndex >= 3 && uvIndex <= 6) {
               $(".uv").css({"background-color": "greenyellow"});
               $(".uv").css({"width": "25%"});
+              $(".uv").css({"padding": "10px"});
             }
             if (uvIndex >= 6 && uvIndex <= 9) {
               $(".uv").css({"background-color": "yellow"});
               $(".uv").css({"width": "25%"});
+              $(".uv").css({"padding": "10px"});
             }
             if (uvIndex >= 9 && uvIndex <= 11) {
               $(".uv").css({"background-color": "orange"});
               $(".uv").css({"width": "25%"});
+              $(".uv").css({"padding": "10px"});
             }
             if (uvIndex > 11) {
               $(".uv").css({"background-color": "red"});
               $(".uv").css({"width": "25%"});
+              $(".uv").css({"padding": "10px"});
             }
 
           })
@@ -134,12 +139,15 @@ function searchCity(city) {
 
             if (response.list[0].weather[0].main === "Clouds") {
               $(".weather1").html("<img src='./assets/Cloudy.svg' style='width: 25%'/>");
+              $(".weather1").css({"margin-bottom":"5px"});
             }
             if (response.list[0].weather[0].main === "Rain") {
               $(".weather1").html("<img src='./assets/Rain.svg' style='width: 25%'/>");
+              $(".weather1").css({"margin-bottom":"5px"});
             }
             if (response.list[0].weather[0].main === "Clear") {
               $(".weather1").html("<img src='./assets/Sunny.svg' style='width: 25%'/>");
+              $(".weather1").css({"margin-bottom":"5px"});
             }
 
       // Convert the temp to fahrenheit
@@ -155,12 +163,15 @@ function searchCity(city) {
 
             if (response.list[1].weather[0].main === "Clouds") {
               $(".weather2").html("<img src='./assets/Cloudy.svg' style='width: 25%'/>");
+              $(".weather2").css({"margin-bottom":"5px"});
             }
             if (response.list[1].weather[0].main === "Rain") {
               $(".weather2").html("<img src='./assets/Rain.svg' style='width: 25%'/>");
+              $(".weather2").css({"margin-bottom":"5px"});
             }
             if (response.list[1].weather[0].main === "Clear") {
               $(".weather2").html("<img src='./assets/Sunny.svg' style='width: 25%'/>");
+              $(".weather2").css({"margin-bottom":"5px"});
             }
 
       // Convert the temp to fahrenheit
@@ -176,12 +187,15 @@ function searchCity(city) {
 
             if (response.list[2].weather[0].main === "Clouds") {
               $(".weather3").html("<img src='./assets/Cloudy.svg' style='width: 25%'/>");
+              $(".weather3").css({"margin-bottom":"5px"});
             }
             if (response.list[2].weather[0].main === "Rain") {
               $(".weather3").html("<img src='./assets/Rain.svg' style='width: 25%'/>");
+              $(".weather3").css({"margin-bottom":"5px"});
             }
             if (response.list[2].weather[0].main === "Clear") {
               $(".weather3").html("<img src='./assets/Sunny.svg' style='width: 25%'/>");
+              $(".weather3").css({"margin-bottom":"5px"});
             }
 
       // Convert the temp to fahrenheit
@@ -197,12 +211,15 @@ function searchCity(city) {
 
             if (response.list[3].weather[0].main === "Clouds") {
               $(".weather4").html("<img src='./assets/Cloudy.svg' style='width: 25%'/>");
+              $(".weather4").css({"margin-bottom":"5px"});
             }
             if (response.list[3].weather[0].main === "Rain") {
               $(".weather4").html("<img src='./assets/Rain.svg' style='width: 25%'/>");
+              $(".weather4").css({"margin-bottom":"5px"});
             }
             if (response.list[3].weather[0].main === "Clear") {
               $(".weather4").html("<img src='./assets/Sunny.svg' style='width: 25%'/>");
+              $(".weather4").css({"margin-bottom":"5px"});
             }
 
       // Convert the temp to fahrenheit
@@ -218,116 +235,118 @@ function searchCity(city) {
 
             if (response.list[4].weather[0].main === "Clouds") {
               $(".weather5").html("<img src='./assets/Cloudy.svg' style='width: 25%'/>");
+              $(".weather5").css({"margin-bottom":"5px"});
             }
             if (response.list[4].weather[0].main === "Rain") {
               $(".weather5").html("<img src='./assets/Rain.svg' style='width: 25%'/>");
+              $(".weather5").css({"margin-bottom":"5px"});
             }
             if (response.list[4].weather[0].main === "Clear") {
               $(".weather5").html("<img src='./assets/Sunny.svg' style='width: 25%'/>");
+              $(".weather5").css({"margin-bottom":"5px"});
             }
 
     })
 }
 
+
+
+
+
+
 // Event handler for user clicking the "Search for a City" button
 $("#searchBTN").on("click", function(event) {
 
-// Preventing the button from trying to submit the form
-event.preventDefault();
+  // Preventing the button from trying to submit the form
+  event.preventDefault();
 
-// City Variable
-var inputCity = $("#city-input").val().trim();
+  // City Variable
+  var inputCity = $("#city-input").val().trim();
 
-// Running the searchCity function(passing in the city as an argument)
-searchCity(inputCity);
-})
+  // Running the searchCity function(passing in the city as an argument)
+  searchCity(inputCity);
+
+});
+
+
+// Common city buttons
 
 // When "Austin" button is clicked, run "searchCity()"
 $(".austin").on("click", function(event) {
 
-// Preventing the button from trying to submit the form
-event.preventDefault();
-
-// Running the searchCity function(passing in the city as an argument)
-searchCity("Austin");
-});
-
-// When "Boston" button is clicked, run "searchCity()"
-$(".boston").on("click", function(event) {
-
   // Preventing the button from trying to submit the form
   event.preventDefault();
   
   // Running the searchCity function(passing in the city as an argument)
-  searchCity("Boston");
+  searchCity("Austin");
   });
-
-// When "Chicago" button is clicked, run "searchCity()"
-$(".chicago").on("click", function(event) {
-
-  // Preventing the button from trying to submit the form
-  event.preventDefault();
   
-  // Running the searchCity function(passing in the city as an argument)
-  searchCity("Chicago");
-  });
-
-  // When "Dallas" button is clicked, run "searchCity()"
-$(".dallas").on("click", function(event) {
-
-  // Preventing the button from trying to submit the form
-  event.preventDefault();
+  // When "Boston" button is clicked, run "searchCity()"
+  $(".boston").on("click", function(event) {
   
-  // Running the searchCity function(passing in the city as an argument)
-  searchCity("Dallas");
-  });
-
-  // When "Houston" button is clicked, run "searchCity()"
-$(".houston").on("click", function(event) {
-
-  // Preventing the button from trying to submit the form
-  event.preventDefault();
+    // Preventing the button from trying to submit the form
+    event.preventDefault();
+    
+    // Running the searchCity function(passing in the city as an argument)
+    searchCity("Boston");
+    });
   
-  // Running the searchCity function(passing in the city as an argument)
-  searchCity("Houston");
-  });
-
-  // When "Los Angeles" button is clicked, run "searchCity()"
-$(".la").on("click", function(event) {
-
-  // Preventing the button from trying to submit the form
-  event.preventDefault();
+  // When "Chicago" button is clicked, run "searchCity()"
+  $(".chicago").on("click", function(event) {
   
-  // Running the searchCity function(passing in the city as an argument)
-  searchCity("Los Angeles");
-  });
-
-  // When "Miami" button is clicked, run "searchCity()"
-$(".miami").on("click", function(event) {
-
-  // Preventing the button from trying to submit the form
-  event.preventDefault();
+    // Preventing the button from trying to submit the form
+    event.preventDefault();
+    
+    // Running the searchCity function(passing in the city as an argument)
+    searchCity("Chicago");
+    });
   
-  // Running the searchCity function(passing in the city as an argument)
-  searchCity("Miami");
-  });
-
-  // When "New York" button is clicked, run "searchCity()"
-$(".nyc").on("click", function(event) {
-
-  // Preventing the button from trying to submit the form
-  event.preventDefault();
+    // When "Dallas" button is clicked, run "searchCity()"
+  $(".dallas").on("click", function(event) {
   
-  // Running the searchCity function(passing in the city as an argument)
-  searchCity("New York");
-  });
-
-
-
-
-
-
-
-
-
-
+    // Preventing the button from trying to submit the form
+    event.preventDefault();
+    
+    // Running the searchCity function(passing in the city as an argument)
+    searchCity("Dallas");
+    });
+  
+    // When "Houston" button is clicked, run "searchCity()"
+  $(".houston").on("click", function(event) {
+  
+    // Preventing the button from trying to submit the form
+    event.preventDefault();
+    
+    // Running the searchCity function(passing in the city as an argument)
+    searchCity("Houston");
+    });
+  
+    // When "Los Angeles" button is clicked, run "searchCity()"
+  $(".la").on("click", function(event) {
+  
+    // Preventing the button from trying to submit the form
+    event.preventDefault();
+    
+    // Running the searchCity function(passing in the city as an argument)
+    searchCity("Los Angeles");
+    });
+  
+    // When "Miami" button is clicked, run "searchCity()"
+  $(".miami").on("click", function(event) {
+  
+    // Preventing the button from trying to submit the form
+    event.preventDefault();
+    
+    // Running the searchCity function(passing in the city as an argument)
+    searchCity("Miami");
+    });
+  
+    // When "New York" button is clicked, run "searchCity()"
+  $(".nyc").on("click", function(event) {
+  
+    // Preventing the button from trying to submit the form
+    event.preventDefault();
+    
+    // Running the searchCity function(passing in the city as an argument)
+    searchCity("New York");
+    });
