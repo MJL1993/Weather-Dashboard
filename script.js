@@ -78,26 +78,31 @@ function searchCity(city) {
               $(".uv").css({"background-color": "lightseagreen"});
               $(".uv").css({"width": "25%"});
               $(".uv").css({"padding": "10px"});
+              $(".uv").css({"border-radius": "5px"});
             }
             if (uvIndex >= 3 && uvIndex <= 6) {
               $(".uv").css({"background-color": "greenyellow"});
               $(".uv").css({"width": "25%"});
               $(".uv").css({"padding": "10px"});
+              $(".uv").css({"border-radius": "5px"});
             }
             if (uvIndex >= 6 && uvIndex <= 9) {
               $(".uv").css({"background-color": "yellow"});
               $(".uv").css({"width": "25%"});
               $(".uv").css({"padding": "10px"});
+              $(".uv").css({"border-radius": "5px"});
             }
             if (uvIndex >= 9 && uvIndex <= 11) {
               $(".uv").css({"background-color": "orange"});
               $(".uv").css({"width": "25%"});
               $(".uv").css({"padding": "10px"});
+              $(".uv").css({"border-radius": "5px"});
             }
             if (uvIndex > 11) {
               $(".uv").css({"background-color": "red"});
               $(".uv").css({"width": "25%"});
               $(".uv").css({"padding": "10px"});
+              $(".uv").css({"border-radius": "5px"});
             }
 
           })
