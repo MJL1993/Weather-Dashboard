@@ -1,25 +1,32 @@
 var searchedCities = []
 
+//When opening the page, run localStorage search function/populate page with buttons from localStorage
 window.addEventListener("load", function(){
   console.log()
-let localStorageCities = localStorage.getItem("searchedCities")
-searchedCities = JSON.parse(localStorageCities)
-  // get the local storage key that holds previously searched cites
-for(let i = 0; i < searchedCities.length; i++){
-  console.log(searchedCities[i])
-  var searchedBTN = $("<button>").text(searchedCities[i])
-  searchedBTN.on("click", function(e) {
-    console.log(e)
-    searchCity(e.target.textContent)
-  })
-  $(".search-cities").prepend(searchedBTN)
-  searchedBTN.addClass("btn")
-  searchedBTN.addClass("btn-dark")
-  searchedBTN.attr("type", "button")
-  
-}
-  // populate searchedCities array with that data
-  // later when search happens add new city to that array and restore in localstorage
+
+  let localStorageCities = localStorage.getItem("searchedCities")
+
+  searchedCities = JSON.parse(localStorageCities)
+
+    // get the local storage key that holds previously searched cites
+  for(let i = 0; i < searchedCities.length; i++){
+
+    console.log(searchedCities[i])
+
+    var searchedBTN = $("<button>").text(searchedCities[i])
+
+    searchedBTN.on("click", function(e) {
+      console.log(e)
+      searchCity(e.target.textContent)
+    })
+    
+    $(".search-cities").prepend(searchedBTN)
+    searchedBTN.addClass("btn")
+    searchedBTN.addClass("btn-dark")
+    searchedBTN.attr("type", "button")
+    
+  }
+
 })
 
 function searchCity(city) {
@@ -27,9 +34,6 @@ function searchCity(city) {
   var key = "3d9cd4f172e0db1e629dcb89ee5c1d36"
   var queryURL = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=" + key;
   var dayLabel = moment().format('L'); 
-
-
-
 
   // AJAX Call to WeatherMapAPI
   $.ajax({
@@ -75,7 +79,6 @@ function searchCity(city) {
         $(".weather").html("<img src='./assets/Sunny.svg' style='width: 10%'/>");
       }  
 
-      
       function uvIndex() {
 
         var latitude = response.coord.lat;
@@ -159,132 +162,127 @@ function searchCity(city) {
       console.log(response);
 
       // Convert the temp to fahrenheit
-      var tempK = response.list[0].main.temp;
+      var tempK = response.list[4].main.temp;
       var tempF = (tempK - 273.15) * 1.80 + 32;
 
       // Forecast Day1 Content
       $(".day1Date").text(moment().add(1, 'day').format('L'));
       $(".day1Temp").text("Temp: " + tempF.toFixed(2) + " ºF");
-      $(".day1Hum").text("Humidity: " + response.list[0].main.humidity + "%");
+      $(".day1Hum").text("Humidity: " + response.list[4].main.humidity + "%");
 
             // Conditional to display Sunny, Cloudy, Partly Cloudy, or Rainy svg file
 
-            if (response.list[0].weather[0].main === "Clouds") {
+            if (response.list[4].weather[0].main === "Clouds") {
               $(".weather1").html("<img src='./assets/Cloudy.svg' style='width: 25%'/>");
               $(".weather1").css({"margin-bottom":"5px"});
             }
-            if (response.list[0].weather[0].main === "Rain") {
+            if (response.list[4].weather[0].main === "Rain") {
               $(".weather1").html("<img src='./assets/Rain.svg' style='width: 25%'/>");
               $(".weather1").css({"margin-bottom":"5px"});
             }
-            if (response.list[0].weather[0].main === "Clear") {
+            if (response.list[4].weather[0].main === "Clear") {
               $(".weather1").html("<img src='./assets/Sunny.svg' style='width: 25%'/>");
               $(".weather1").css({"margin-bottom":"5px"});
             }
 
       // Convert the temp to fahrenheit
-      var tempK = response.list[1].main.temp;
+      var tempK = response.list[12].main.temp;
       var tempF = (tempK - 273.15) * 1.80 + 32;      
 
       // Forecast Day2 Content
       $(".day2Date").text(moment().add(2, 'day').format('L'));
       $(".day2Temp").text("Temp: " + tempF.toFixed(2) + " ºF");
-      $(".day2Hum").text("Humidity: " + response.list[1].main.humidity + "%");
+      $(".day2Hum").text("Humidity: " + response.list[12].main.humidity + "%");
 
             // Conditional to display Sunny, Cloudy, Partly Cloudy, or Rainy svg file
 
-            if (response.list[1].weather[0].main === "Clouds") {
+            if (response.list[12].weather[0].main === "Clouds") {
               $(".weather2").html("<img src='./assets/Cloudy.svg' style='width: 25%'/>");
               $(".weather2").css({"margin-bottom":"5px"});
             }
-            if (response.list[1].weather[0].main === "Rain") {
+            if (response.list[12].weather[0].main === "Rain") {
               $(".weather2").html("<img src='./assets/Rain.svg' style='width: 25%'/>");
               $(".weather2").css({"margin-bottom":"5px"});
             }
-            if (response.list[1].weather[0].main === "Clear") {
+            if (response.list[12].weather[0].main === "Clear") {
               $(".weather2").html("<img src='./assets/Sunny.svg' style='width: 25%'/>");
               $(".weather2").css({"margin-bottom":"5px"});
             }
 
       // Convert the temp to fahrenheit
-      var tempK = response.list[2].main.temp;
+      var tempK = response.list[20].main.temp;
       var tempF = (tempK - 273.15) * 1.80 + 32;
 
       // Forecast Day3 Content
       $(".day3Date").text(moment().add(3, 'day').format('L'));
       $(".day3Temp").text("Temp: " + tempF.toFixed(2) + "ºF");
-      $(".day3Hum").text("Humidity: " + response.list[2].main.humidity + "%");
+      $(".day3Hum").text("Humidity: " + response.list[20].main.humidity + "%");
 
             // Conditional to display Sunny, Cloudy, Partly Cloudy, or Rainy svg file
 
-            if (response.list[2].weather[0].main === "Clouds") {
+            if (response.list[20].weather[0].main === "Clouds") {
               $(".weather3").html("<img src='./assets/Cloudy.svg' style='width: 25%'/>");
               $(".weather3").css({"margin-bottom":"5px"});
             }
-            if (response.list[2].weather[0].main === "Rain") {
+            if (response.list[20].weather[0].main === "Rain") {
               $(".weather3").html("<img src='./assets/Rain.svg' style='width: 25%'/>");
               $(".weather3").css({"margin-bottom":"5px"});
             }
-            if (response.list[2].weather[0].main === "Clear") {
+            if (response.list[20].weather[0].main === "Clear") {
               $(".weather3").html("<img src='./assets/Sunny.svg' style='width: 25%'/>");
               $(".weather3").css({"margin-bottom":"5px"});
             }
 
       // Convert the temp to fahrenheit
-      var tempK = response.list[3].main.temp;
+      var tempK = response.list[28].main.temp;
       var tempF = (tempK - 273.15) * 1.80 + 32;
 
       // Forecast Day4 Content
       $(".day4Date").text(moment().add(4, 'day').format('L'));
       $(".day4Temp").text("Temp: " + tempF.toFixed(2) + " ºF");
-      $(".day4Hum").text("Humidity: " + response.list[3].main.humidity + "%");
+      $(".day4Hum").text("Humidity: " + response.list[28].main.humidity + "%");
 
             // Conditional to display Sunny, Cloudy, Partly Cloudy, or Rainy svg file
 
-            if (response.list[3].weather[0].main === "Clouds") {
+            if (response.list[28].weather[0].main === "Clouds") {
               $(".weather4").html("<img src='./assets/Cloudy.svg' style='width: 25%'/>");
               $(".weather4").css({"margin-bottom":"5px"});
             }
-            if (response.list[3].weather[0].main === "Rain") {
+            if (response.list[28].weather[0].main === "Rain") {
               $(".weather4").html("<img src='./assets/Rain.svg' style='width: 25%'/>");
               $(".weather4").css({"margin-bottom":"5px"});
             }
-            if (response.list[3].weather[0].main === "Clear") {
+            if (response.list[28].weather[0].main === "Clear") {
               $(".weather4").html("<img src='./assets/Sunny.svg' style='width: 25%'/>");
               $(".weather4").css({"margin-bottom":"5px"});
             }
 
       // Convert the temp to fahrenheit
-      var tempK = response.list[4].main.temp;
+      var tempK = response.list[36].main.temp;
       var tempF = (tempK - 273.15) * 1.80 + 32;
 
       // Forecast Day5 Content
       $(".day5Date").text(moment().add(5, 'day').format('L'));
       $(".day5Temp").text("Temp: " + tempF.toFixed(2) + "ºF");
-      $(".day5Hum").text("Humidity: " + response.list[4].main.humidity + "%");
+      $(".day5Hum").text("Humidity: " + response.list[36].main.humidity + "%");
 
             // Conditional to display Sunny, Cloudy, Partly Cloudy, or Rainy svg file
 
-            if (response.list[4].weather[0].main === "Clouds") {
+            if (response.list[36].weather[0].main === "Clouds") {
               $(".weather5").html("<img src='./assets/Cloudy.svg' style='width: 25%'/>");
               $(".weather5").css({"margin-bottom":"5px"});
             }
-            if (response.list[4].weather[0].main === "Rain") {
+            if (response.list[36].weather[0].main === "Rain") {
               $(".weather5").html("<img src='./assets/Rain.svg' style='width: 25%'/>");
               $(".weather5").css({"margin-bottom":"5px"});
             }
-            if (response.list[4].weather[0].main === "Clear") {
+            if (response.list[36].weather[0].main === "Clear") {
               $(".weather5").html("<img src='./assets/Sunny.svg' style='width: 25%'/>");
               $(".weather5").css({"margin-bottom":"5px"});
             }
 
     })
 }
-
-
-
-
-
 
 // Event handler for user clicking the "Search for a City" button
 $("#searchBTN").on("click", function(event) {
@@ -311,9 +309,5 @@ $("#searchBTN").on("click", function(event) {
   searchedBTN.addClass("btn")
   searchedBTN.addClass("btn-dark")
   searchedBTN.attr("type", "button")
-  
-  
-  // Make an empty object inside a variable called "recentSearches"
-  // When searchCity is run, add "inputCity" to "recentSearches" 
 
 });
