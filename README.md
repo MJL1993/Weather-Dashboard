@@ -8,7 +8,7 @@ https://mjl1993.github.io/Weather-Dashboard/
 
 Description:
 
-This is a weather dashboard webpage used to search for current weather data in particular city. 
+This is a weather dashboard webpage used to search for current weather data in a particular city. 
 
 When the user searches for a city, the website displays the following current weather data for the day:
 - City name & date
