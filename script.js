@@ -1,8 +1,35 @@
+var searchedCities = []
+
+window.addEventListener("load", function(){
+  console.log()
+let localStorageCities = localStorage.getItem("searchedCities")
+searchedCities = JSON.parse(localStorageCities)
+  // get the local storage key that holds previously searched cites
+for(let i = 0; i < searchedCities.length; i++){
+  console.log(searchedCities[i])
+  var searchedBTN = $("<button>").text(searchedCities[i])
+  searchedBTN.on("click", function(e) {
+    console.log(e)
+    searchCity(e.target.textContent)
+  })
+  $(".search-cities").prepend(searchedBTN)
+  searchedBTN.addClass("btn")
+  searchedBTN.addClass("btn-dark")
+  searchedBTN.attr("type", "button")
+  
+}
+  // populate searchedCities array with that data
+  // later when search happens add new city to that array and restore in localstorage
+})
+
 function searchCity(city) {
 
   var key = "3d9cd4f172e0db1e629dcb89ee5c1d36"
   var queryURL = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=" + key;
   var dayLabel = moment().format('L'); 
+
+
+
 
   // AJAX Call to WeatherMapAPI
   $.ajax({
@@ -271,87 +298,22 @@ $("#searchBTN").on("click", function(event) {
   // Running the searchCity function(passing in the city as an argument)
   searchCity(inputCity);
 
+  searchedCities.push(inputCity);
+
+  let string = JSON.stringify(searchedCities)
+  localStorage.setItem("searchedCities", string)
+
+  console.log(localStorage);
+
+  // When searchCity(inputCity) is run, create a button in html div ".search-cities" (prepend it to the button list)
+  var searchedBTN = $("<button>").text(inputCity)
+  $('.search-cities').prepend(searchedBTN)
+  searchedBTN.addClass("btn")
+  searchedBTN.addClass("btn-dark")
+  searchedBTN.attr("type", "button")
+  
+  
+  // Make an empty object inside a variable called "recentSearches"
+  // When searchCity is run, add "inputCity" to "recentSearches" 
+
 });
-
-
-// Common city buttons
-
-// When "Austin" button is clicked, run "searchCity()"
-$(".austin").on("click", function(event) {
-
-  // Preventing the button from trying to submit the form
-  event.preventDefault();
-  
-  // Running the searchCity function(passing in the city as an argument)
-  searchCity("Austin");
-  });
-  
-  // When "Boston" button is clicked, run "searchCity()"
-  $(".boston").on("click", function(event) {
-  
-    // Preventing the button from trying to submit the form
-    event.preventDefault();
-    
-    // Running the searchCity function(passing in the city as an argument)
-    searchCity("Boston");
-    });
-  
-  // When "Chicago" button is clicked, run "searchCity()"
-  $(".chicago").on("click", function(event) {
-  
-    // Preventing the button from trying to submit the form
-    event.preventDefault();
-    
-    // Running the searchCity function(passing in the city as an argument)
-    searchCity("Chicago");
-    });
-  
-    // When "Dallas" button is clicked, run "searchCity()"
-  $(".dallas").on("click", function(event) {
-  
-    // Preventing the button from trying to submit the form
-    event.preventDefault();
-    
-    // Running the searchCity function(passing in the city as an argument)
-    searchCity("Dallas");
-    });
-  
-    // When "Houston" button is clicked, run "searchCity()"
-  $(".houston").on("click", function(event) {
-  
-    // Preventing the button from trying to submit the form
-    event.preventDefault();
-    
-    // Running the searchCity function(passing in the city as an argument)
-    searchCity("Houston");
-    });
-  
-    // When "Los Angeles" button is clicked, run "searchCity()"
-  $(".la").on("click", function(event) {
-  
-    // Preventing the button from trying to submit the form
-    event.preventDefault();
-    
-    // Running the searchCity function(passing in the city as an argument)
-    searchCity("Los Angeles");
-    });
-  
-    // When "Miami" button is clicked, run "searchCity()"
-  $(".miami").on("click", function(event) {
-  
-    // Preventing the button from trying to submit the form
-    event.preventDefault();
-    
-    // Running the searchCity function(passing in the city as an argument)
-    searchCity("Miami");
-    });
-  
-    // When "New York" button is clicked, run "searchCity()"
-  $(".nyc").on("click", function(event) {
-  
-    // Preventing the button from trying to submit the form
-    event.preventDefault();
-    
-    // Running the searchCity function(passing in the city as an argument)
-    searchCity("New York");
-    });
